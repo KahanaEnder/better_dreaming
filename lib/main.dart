@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 // Import no utilizado eliminado: 'package:flutter/rendering.dart';
-
+import 'learning.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -52,12 +52,15 @@ class _MyHomePageState extends State<MyHomePage> {
       _counter = 0;
     });
   }
+  void _tryPrintSomething() {
+    print("Cuenta");
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         title: Text(widget.title),
       ),
       body: Center(
@@ -65,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'PAJAS', // Texto cambiado
+              'Sueños profundos:', // Texto cambiado
             ),
             Text(
               '$_counter',
@@ -76,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       // Se reemplazó el único FloatingActionButton con una fila de botones
       floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.end, // Ajusta la alineación según sea necesario
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Ajusta la alineación según sea necesario
         children: <Widget>[
           FloatingActionButton(
             onPressed: _decrementCounter,
@@ -95,6 +98,12 @@ class _MyHomePageState extends State<MyHomePage> {
             tooltip: 'Incrementar',
             heroTag: 'increment', // heroTag único
             child: const Icon(Icons.add),
+          ),
+          FloatingActionButton(
+            onPressed: _tryPrintSomething,
+            tooltip: 'Printear',
+            heroTag: 'printer', // heroTag único
+            child: const Icon(Icons.account_circle),
           ),
         ],
       ),
