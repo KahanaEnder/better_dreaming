@@ -20,7 +20,8 @@ Widget crearTexto(String texto) {
 Widget crearColumna(List<Widget> widgets) {
   // Retorna un widget Column que organiza los widgets verticalmente.
   return Column(
-    children: widgets, // Los widgets que se mostrarán en la columna.
-    crossAxisAlignment: CrossAxisAlignment.start, // Alineación horizontal de los widgets.
+     // Los widgets que se mostrarán en la columna.
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: widgets, // Alineación horizontal de los widgets.
   );
 }

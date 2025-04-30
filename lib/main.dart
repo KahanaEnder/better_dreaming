@@ -9,6 +9,17 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
+  Widget build(BuildContext context) {  /*Comentario con multiples lineas*/
+    return NuevoWidget();
+  }
+}
+
+class NuevoWidget extends StatelessWidget {
+  const NuevoWidget({
+    super.key,
+  });
+//Comentario normal, aca finaliza la creacion que comienza desde el override hecho con extract widget
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Better Dreaming', // Considera un título más neutro
