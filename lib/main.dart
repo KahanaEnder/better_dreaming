@@ -36,11 +36,17 @@ class NuevoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Better Dreaming', // Considera un título más neutro
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 55, 0, 92)),
+        //colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 55, 0, 92)),
+        //colorScheme: ColorScheme.dark(),
+        colorScheme: ColorScheme.dark(),
+        //colorScheme: ColorScheme.light(),
         useMaterial3: true, // Recomendado para nuevos proyectos Flutter
       ),
+      //darkTheme: ThemeData.dark(),
+      //highContrastTheme: ThemeData.light(),
       home: const MyHomePage(title: 'Better Dreaming'), // Título cambiado
     );
   }
@@ -66,7 +72,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-
+  String titulo = "Sleep Better";
+  String contenido = "Try going to the bed earlier than you are used to it";
 //Funciones
   void _incrementCounter() {
     setState(() {
@@ -93,6 +100,27 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+void _mostrarDialogo(BuildContext context,String titulo, String contenido) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text(titulo),
+        content: Text(contenido),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context); // Cierra el diálogo
+            },
+            child: Text('Cerrar'),
+          ),
+        ],
+      );
+    },
+  );
+}
+
+
 
 
   @override
@@ -109,16 +137,18 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.primary,
         title: Text(widget.title),
       ),
-      body: Dialog(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            textoComoVariable,
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+      body: Center(
+        child: SizedBox(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              textoComoVariable,
+              Text(
+                '$_counter',
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+            ],
+          ),
         ),
       ),
       // Se reemplazó el único FloatingActionButton con una fila de botones
@@ -166,7 +196,7 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: _tryPrintSomething,
             tooltip: 'Printear',
             heroTag: 'printer', // heroTag único
-            child: const Icon(Icons.account_circle),
+            child: const Icon(Icons.print),
           ),
         ],
       ),
@@ -177,15 +207,19 @@ class _MyHomePageState extends State<MyHomePage> {
       persistentFooterButtons: [
 
 
-        
+
         FloatingActionButton.small(
-          onPressed: _tryPrintSomething,
+          onPressed: () {
+            titulo = "Duerme Mejor";
+            contenido = "Intenta ir a la cama antes de lo que estas acostumbrado";
+            _mostrarDialogo(context, titulo, contenido);
+          },
           tooltip: 'Botón chiquito',
           heroTag: 'Small Button',
-          backgroundColor: Color.fromARGB(255,123,234,12),
-          foregroundColor: Colors.pinkAccent,
+          backgroundColor: Colors.yellowAccent.shade400,
+          foregroundColor: Colors.purple[900],
           autofocus: true,
-          hoverColor: Color.fromRGBO(92, 0, 0, 1),
+          hoverColor: Colors.green.shade600,
           shape: OvalBorder(),
           child: const Icon(Icons.donut_small),
         ),
@@ -193,10 +227,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
         FloatingActionButton.large(
-          onPressed: _tryPrintSomething,
+          onPressed: () => _mostrarDialogo(context,titulo,contenido),
           tooltip: "Botón grande",
           backgroundColor: Color.fromARGB(0, 0, 0, 0),
-          foregroundColor: Colors.blue,
+          foregroundColor: Colors.purple.shade900,
           hoverColor: Colors.amber,
           shape: BeveledRectangleBorder(),
           mouseCursor: SystemMouseCursors.text,
