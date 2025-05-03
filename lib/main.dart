@@ -127,7 +127,7 @@ void _mostrarDialogo(BuildContext context,String titulo, String contenido) {
   Widget build(BuildContext context) {
     var textoComoVariable = Text(
               'Sueños profundos:', // Texto cambiado
-              style: Theme.of(context).textTheme.displayLarge,
+              style: Theme.of(context).textTheme.displayMedium,
             );
 
 
@@ -208,7 +208,7 @@ void _mostrarDialogo(BuildContext context,String titulo, String contenido) {
 
 
 
-        FloatingActionButton.small(
+        FloatingActionButton.large(
           onPressed: () {
             titulo = "Duerme Mejor";
             contenido = "Intenta ir a la cama antes de lo que estas acostumbrado";
@@ -227,7 +227,7 @@ void _mostrarDialogo(BuildContext context,String titulo, String contenido) {
 
 
         FloatingActionButton.large(
-          onPressed: () => _mostrarDialogo(context,titulo,contenido),
+          onPressed: () => _mostrarDialogo(context,titulo = "Sleep Better",contenido = "Try going to the bed earlier than you are used to it"),
           tooltip: "Botón grande",
           backgroundColor: Color.fromARGB(0, 0, 0, 0),
           foregroundColor: Colors.purple.shade900,
