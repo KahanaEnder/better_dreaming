@@ -89,8 +89,18 @@ void _mostrarDialogo(BuildContext context,String titulo, String contenido) {
                 '$_counter',
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
-              crearTexto("texto"),
-              crearColumna([Text("data"),Text("data"),Text("data")],),
+              crearTexto("Sueños lucidos"),
+              crearColumna(
+                [Text(
+                  "Dormir temprano",
+                  style: Theme.of(context).textTheme.headlineMedium,),
+                  Text
+                  ("Estar en la oscuridad",
+                  style: Theme.of(context).textTheme.headlineMedium,),
+                  Text("Sonidos relajantes",
+                  style: Theme.of(context).textTheme.headlineMedium,),
+                ],
+              ),
             ],
           ),
         ),
